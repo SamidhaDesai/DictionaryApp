@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>Dictionary</title>
+</head>
+
+   <style>
+   
+   .container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Adjust the height as needed */
+    background: url('dictionary.jpg') center/cover no-repeat; Replace 'your-image.jpg' with your image URL */
+    background-attachment: fixed; /* Optional: Parallax effect */
+
+   
+   }
+   .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    margin:  100px;
+    padding: 100px;
+    padding: 100px;
+    background-color: #dfe5e4;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #fff; 
+}
+   
+
+   </style>
+
+</head>
+<body>
+<div class= 'container'>
+<div class="card-body" style="align-items:center; margin-left:0px">
+
+<div class="p-3 mb-2 bg-black text-white">
+<h1 class="text-center fst-italic">This is Dictionary App <span id="word"></span> </h1>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</div>
+
+<form>
+ 
+<br><br>
+ <label style="align-items:center"><h3><b class="text-primary-emphasis">Word</b></h3></label>
+ <input type="text" id="ww"> <br><br>
+ 
+ <button value="submit"type="button" class="btn btn-secondary btn-lg"id="submit">submit</button>
+ 
+</form>
+<div class="border border-black">
+<div class="card-body">
+<p><b><h5>Meaning :</b></h5>  <span id="definition" class="text-light bg-dark"></span></p>
+</div></div>
+
+</div>
+</div>
+</div>
+<script>
+			
+	
+const options = {
+	method: 'GET',
+
+
+	headers: {
+		'X-RapidAPI-Key': '44003a6195mshab6cd602d27515ep19a87ejsn997395984416',
+		'X-RapidAPI-Host': 'dictionary-by-api-ninjas.p.rapidapi.com'
+	}
+};
+   const Dictionary = (word) => {
+       fetch('https://dictionary-by-api-ninjas.p.rapidapi.com/v1/dictionary?word=' + word, options)
+	   .then(response => response.json())
+	   .then(data => {console.log(data)
+	   
+	   definition.innerHTML = data.definition
+	   })
+	   }
+	 
+	 submit.addEventListener("click", (e) =>{
+	 e.preventDefault()
+	 Dictionary(ww.value)
+	 console.log(ww.value)
+	 })
+	 
+	 Dictionary("moon")
+	 
+	
+	 
+</script>
+
+
+
+
+</body>
+</html>
